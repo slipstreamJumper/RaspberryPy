@@ -6,10 +6,10 @@ from raspberrypy.control.myo import Myo
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(14, GPIO.OUT)
-GPIO.setup(15, GPIO.OUT)
-upper = GPIO.PWM(14, 50)
-lower = GPIO.PWM(15, 50)
+GPIO.setup(7, GPIO.OUT)
+GPIO.setup(11, GPIO.OUT)
+upper = GPIO.PWM(7, 50)
+lower = GPIO.PWM(11, 50)
 upper.start(7.5)
 lower.start(7.5)
 
