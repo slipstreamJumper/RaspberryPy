@@ -60,14 +60,14 @@ if __name__ == '__main__':
 
   current_pose = ""
   m.add_arm_handler(lambda arm, xdir: print('arm', arm, 'xdir', xdir))
-  m.add_pose_handler(lambda p: move_arm())
+  #m.add_pose_handler(lambda p: move_arm())
   #print('pose', global_current_pose)
 
 
   try:
     while True:
       m.run(1)
-
+      move_arm()
   except KeyboardInterrupt:
     pass
   finally:
