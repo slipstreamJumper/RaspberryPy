@@ -279,12 +279,12 @@ class Myo(object):
       ## framerate starts dropping inversely. Also, if this is much less than
       ## 1000, EMG data becomes slower to respond to changes. In conclusion,
       ## 1000 is probably a good value.
-      C = 700
-      emg_hz = 50
+      C = 200
+      emg_hz = 3
       ## strength of low-pass filtering of EMG data
       emg_smooth = 100
 
-      imu_hz = 50
+      imu_hz = 3
 
       ## send sensor parameters, or we don't get any data
       self.write_attr(0x19, pack('BBBBHBBBBB', 2, 9, 2, 1, C, emg_smooth, C // emg_hz, imu_hz, 0, 0))
