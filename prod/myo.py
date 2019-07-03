@@ -31,6 +31,7 @@ if __name__ == '__main__':
     global_current_pose = pose
 
   def normalize_gyro_duty_cycle(x):
+    x = x + 50
     print("duty: " + str((x - 2.5) / (12.5 - 2.5)))
     i = (x - 2.5) / (12.5 - 2.5)
     if i <= 2.5: i = 5
