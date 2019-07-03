@@ -209,8 +209,14 @@ class Myo(object):
     self.gyro_y = 0
     self.gyro_z = 0
 
+    self.max_x = 0
+    self.min_x = 0
+    self.max_y = 0
+    self.min_y = 0
+    self.max_z = 0
+    self.min_z = 0
 
-  def detect_tty(self):
+def detect_tty(self):
     for p in comports():
       if re.search(r'PID=2458:0*1', p[2]):
         print('using device:', p[0])
@@ -314,11 +320,23 @@ class Myo(object):
         acc = vals[4:7]
         gyro = vals[7:10]
         self.on_imu(quat, acc, gyro)
-        print(quat, acc, gyro)
+        #print(quat, acc, gyro)
 
-        self.gyro_x = gyro[0]
-        self.gyro_y = gyro[1]
-        self.gyro_z = gyro[2]
+        self.gyro_x = acc[0]
+        self.gyro_y = acc[1]
+        self.gyro_z = acc[2]
+
+
+
+        if self.gyro_x > self.max_x: self.max_x = self.gyro_x
+        if self.gyro_x < self.min_x: self.min_x = self.gyro_x
+
+        if self.gyro_y > self.max_y: self.max_y = self.gyro_y
+        if self.gyro_y < self.min_y: self.min_y = self.gyro_y
+
+        if self.gyro_z > self.max_z: self.max_z = self.gyro_z
+        if self.gyro_z < self.min_z: self.min_z = self.gyro_z
+
 
         print("X: " + str(self.gyro_x) + " Y: " + str(self.gyro_y) + " Z: " + str(self.gyro_z))
 

@@ -59,5 +59,8 @@ if __name__ == '__main__':
   except KeyboardInterrupt:
     pass
   finally:
+    print("max x: " + str(m.max_x) + " min x: " + str(m.min_x))
+    print("max y: " + str(m.max_y) + " min y: " + str(m.min_y))
+    print("max z: " + str(m.max_z) + " min z: " + str(m.min_z))
     m.disconnect()
     print()
