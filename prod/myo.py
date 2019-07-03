@@ -9,7 +9,7 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.OUT)
 GPIO.setup(11, GPIO.OUT)
 upper = GPIO.PWM(7, 50)
-lower = GPIO.PWM(11, 100)
+lower = GPIO.PWM(11, 50)
 upper.start(7.5)
 lower.start(7.5)
 
@@ -29,15 +29,15 @@ if __name__ == '__main__':
     #x += 75
     duty = (((12.5 - 2.5)*((x - mi) / (ma - mi))) + 2.5)
     #print("duty: " + str(duty))
-    if duty > 100: duty = 12.5
+    if duty > 100: duty = duty // 10
     elif duty < 0: duty = 2.5
     return duty
 
 
 
   def move_arm():
-    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_y, -50, 50))  # turn towards 90 degree
-    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, -50, 50))  # turn towards 90 degree
+    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z, -10, 10))  # turn towards 90 degree
+    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, -10, 10))  # turn towards 90 degree
     '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree
