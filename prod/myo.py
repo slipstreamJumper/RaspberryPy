@@ -31,7 +31,10 @@ if __name__ == '__main__':
     global_current_pose = pose
 
 
-  def move_arm(pose):
+  def move_arm():
+    upper.ChangeDutyCycle(m.gyro_z)  # turn towards 90 degree
+    lower.ChangeDutyCycle(m.gyro_x)  # turn towards 90 degree
+    '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree
       lower.ChangeDutyCycle(7.5)  # turn towards 90 degree
@@ -41,14 +44,14 @@ if __name__ == '__main__':
       upper.ChangeDutyCycle(12.5)  # turn towards 180 degree
       lower.ChangeDutyCycle(2.5)  # turn towards 0 degree
       lower.ChangeDutyCycle(12.5)  # turn towards 180 degree
-
+    '''
 # m.add_emg_handler(proc_emg)
   m.connect()
 
 
   current_pose = ""
   m.add_arm_handler(lambda arm, xdir: print('arm', arm, 'xdir', xdir))
-  m.add_pose_handler(lambda p: set_current_pose(p))
+  m.add_pose_handler(lambda p: move_arm())
   #print('pose', global_current_pose)
 
 
