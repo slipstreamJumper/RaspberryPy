@@ -339,9 +339,9 @@ class Myo(object):
         if self.gyro_z > self.max_z: self.max_z = self.gyro_z
         if self.gyro_z < self.min_z: self.min_z = self.gyro_z
 
-        self.gyro_x = self.normalize_val(self.gyro_x, -2380, 2380)
-        self.gyro_y = self.normalize_val(self.gyro_y, -2380, 2380)
-        self.gyro_z = self.normalize_val(self.gyro_z, 0, 2380)
+        self.gyro_x = self.normalize_val(self.gyro_x, self.min_x, self.max_x)
+        self.gyro_y = self.normalize_val(self.gyro_y, self.min_y, self.max_y)
+        self.gyro_z = self.normalize_val(self.gyro_z, self.min_z, self.max_z)
 
 
         print("X: " + str(self.gyro_x) + " Y: " + str(self.gyro_y) + " Z: " + str(self.gyro_z))
