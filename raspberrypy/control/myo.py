@@ -66,11 +66,6 @@ class Pose(enum.Enum):
   THUMB_TO_PINKY = 5
   UNKNOWN = 255
 
-class Gyro(gyro):
-  X_VAL = 0
-  Y_VAL = 0
-  Z_VAL = 0
-
 class Packet(object):
   def __init__(self, ords):
     self.typ = ords[0]
