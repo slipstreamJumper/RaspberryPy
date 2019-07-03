@@ -8,10 +8,10 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.OUT)
 GPIO.setup(11, GPIO.OUT)
-upper = GPIO.PWM(7, 50)
-lower = GPIO.PWM(11, 50)
+upper = GPIO.PWM(7, 20)
+lower = GPIO.PWM(11, 20)
 upper.start(7.5)
-lower.start(7.5)
+lower.start(2.5)
 
 if __name__ == '__main__':
   m = Myo(sys.argv[1] if len(sys.argv) >= 2 else None)
