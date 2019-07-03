@@ -66,6 +66,10 @@ class Pose(enum.Enum):
   THUMB_TO_PINKY = 5
   UNKNOWN = 255
 
+class Gyro(gyro):
+  X_VAL = 0
+  Y_VAL = 0
+  Z_VAL = 0
 
 class Packet(object):
   def __init__(self, ords):
@@ -206,6 +210,11 @@ class Myo(object):
     self.arm_handlers = []
     self.pose_handlers = []
 
+    self.gyro_x = 0
+    self.gyro_y = 0
+    self.gyro_z = 0
+
+
   def detect_tty(self):
     for p in comports():
       if re.search(r'PID=2458:0*1', p[2]):
@@ -310,7 +319,14 @@ class Myo(object):
         acc = vals[4:7]
         gyro = vals[7:10]
         self.on_imu(quat, acc, gyro)
-        print(quat, acc, gyro)
+        #print(gyro)
+
+        self.gyro_x = gyro[0]
+        self.gyro_y = gyro[1]
+        self.gyro_z = gyro[2]
+
+        print("X: " + str(self.gyro_x) + " Y: " + str(self.gyro_y) + " Z: " + str(self.gyro_z))
+
       elif attr == 0x23:
         typ, val, xdir, _, _ , _ = unpack('6B', pay)
 

@@ -49,7 +49,7 @@ if __name__ == '__main__':
   current_pose = ""
   m.add_arm_handler(lambda arm, xdir: print('arm', arm, 'xdir', xdir))
   m.add_pose_handler(lambda p: set_current_pose(p))
-  print('pose', global_current_pose)
+  #print('pose', global_current_pose)
 
 
   try:
