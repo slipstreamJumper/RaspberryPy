@@ -37,8 +37,8 @@ if __name__ == '__main__':
     return r_val
 
   def move_arm():
-    upper.ChangeDutyCycle(m.gyro_z)  # turn towards 90 degree
-    lower.ChangeDutyCycle(m.gyro_x)  # turn towards 90 degree
+    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z))  # turn towards 90 degree
+    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x))  # turn towards 90 degree
     '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree

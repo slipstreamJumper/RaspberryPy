@@ -344,7 +344,7 @@ class Myo(object):
         #self.gyro_z = self.normalize_val(self.gyro_z, self.min_z, self.max_z)
 
 
-        print("X: " + str(self.gyro_x//100.) + " Y: " + str(self.gyro_y//100.) + " Z: " + str(self.gyro_z//100.))
+        print("X: " + str(self.gyro_x) + " Y: " + str(self.gyro_y) + " Z: " + str(self.gyro_z))
 
       elif attr == 0x23:
         typ, val, xdir, _, _ , _ = unpack('6B', pay)
