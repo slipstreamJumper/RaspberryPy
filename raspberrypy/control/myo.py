@@ -227,7 +227,7 @@ class Myo(object):
     self.bt.recv_packet(timeout)
 
   def normalize_val(self, x, min, max):
-    return (x - min) / (max - min)
+    return (x - min) // (max - min)
 
   def connect(self):
     ## stop everything from before
