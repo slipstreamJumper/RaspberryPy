@@ -29,15 +29,15 @@ if __name__ == '__main__':
     #x += 75
     duty = (((12.5 - 2.5)*((x - mi) / (ma - mi))) + 2.5)
     #print("duty: " + str(duty))
-    if duty > 100: duty = 100
-    elif duty < 0: duty = 0
+    if duty > 100: duty = 12.5
+    elif duty < 0: duty = 2.5
     return duty
 
 
 
   def move_arm():
     upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z, -20, 20))  # turn towards 90 degree
-    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, -0, 20))  # turn towards 90 degree
+    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, -20, 20))  # turn towards 90 degree
     '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree
