@@ -31,9 +31,7 @@ if __name__ == '__main__':
     global_current_pose = pose
 
   def normalize_gyro_duty_cycle(x):
-    r_val = x + 25
-    if r_val > 100: r_val = 100
-    elif r_val < 0: r_val = 0
+    r_val = x + 75
     return (r_val - 2.5) / (12.5 - 2.5)
 
   def move_arm():
