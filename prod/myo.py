@@ -13,8 +13,6 @@ lower = GPIO.PWM(11, 50)
 upper.start(7.5)
 lower.start(7.5)
 
-global_current_pose = "REST"
-
 if __name__ == '__main__':
   m = Myo(sys.argv[1] if len(sys.argv) >= 2 else None)
 
@@ -27,13 +25,10 @@ if __name__ == '__main__':
       #print((len(times) - 1) / (times[-1] - times[0]))
       times.pop(0)
 
-  def set_current_pose(pose):
-    global_current_pose = pose
-
   def normalize_gyro_duty_cycle(x, mi, ma):
     #x += 75
     duty = (((12.5 - 2.5)*((x - mi) / (ma - mi))) + 2.5)
-    print("duty: " + str(duty))
+    #print("duty: " + str(duty))
     if duty > 100: duty = 100
     elif duty < 0: duty = 0
     return duty
@@ -41,8 +36,8 @@ if __name__ == '__main__':
 
 
   def move_arm():
-    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, -20, 20))  # turn towards 90 degree
-    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z, -20, 20))  # turn towards 90 degree
+    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z, -20, 20))  # turn towards 90 degree
+    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_y, -20, 20))  # turn towards 90 degree
     '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree
@@ -58,7 +53,6 @@ if __name__ == '__main__':
   m.connect()
 
 
-  current_pose = ""
   m.add_arm_handler(lambda arm, xdir: print('arm', arm, 'xdir', xdir))
   #m.add_pose_handler(lambda p: move_arm())
   #print('pose', global_current_pose)
