@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
   def normalize_gyro_duty_cycle(x, mi, ma):
     #x += 75
-    duty = (((12.5 - 2.5)*((x - mi) / (ma - mi))) + 2.5) // 10
+    duty = (((12.5 - 2.5)*((x - mi) / (ma - mi))) + 2.5)
     print("duty: " + str(duty))
     if duty > 100: duty = 100
     elif duty < 0: duty = 0
