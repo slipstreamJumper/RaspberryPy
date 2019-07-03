@@ -279,7 +279,7 @@ class Myo(object):
       ## framerate starts dropping inversely. Also, if this is much less than
       ## 1000, EMG data becomes slower to respond to changes. In conclusion,
       ## 1000 is probably a good value.
-      C = 1000
+      C = 700
       emg_hz = 50
       ## strength of low-pass filtering of EMG data
       emg_smooth = 100
