@@ -36,9 +36,12 @@ if __name__ == '__main__':
     elif r_val < 0: r_val = 0
     return r_val
 
+  def get_duty_angle(x):
+
+
   def move_arm():
-    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(0- m.gyro_z) + 50)  # turn towards 90 degree
-    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(0- m.gyro_x) + 50)  # turn towards 90 degree
+    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z)//10)  # turn towards 90 degree
+    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x)//10)  # turn towards 90 degree
     '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree
