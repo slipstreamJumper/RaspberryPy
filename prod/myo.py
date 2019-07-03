@@ -31,8 +31,8 @@ if __name__ == '__main__':
     global_current_pose = pose
 
   def normalize_gyro_duty_cycle(x, mi, ma):
-    x += 75
-    duty = ((12.5 - 2.5)*(x - mi / ma - mi) + 2.5)
+    #x += 75
+    duty = (((12.5 - 2.5)*((x - mi) / (ma - mi))) + 2.5) // 10
     print("duty: " + str(duty))
     if duty > 100: duty = 100
     elif duty < 0: duty = 0
