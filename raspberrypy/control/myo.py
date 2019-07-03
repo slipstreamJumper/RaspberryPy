@@ -209,11 +209,11 @@ class Myo(object):
     self.gyro_y = 0
     self.gyro_z = 0
 
-    self.max_x = 0
+    self.max_x = 1
     self.min_x = 0
-    self.max_y = 0
+    self.max_y = 1
     self.min_y = 0
-    self.max_z = 0
+    self.max_z = 1
     self.min_z = 0
 
   def detect_tty(self):
