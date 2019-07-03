@@ -314,7 +314,7 @@ class Myo(object):
         acc = vals[4:7]
         gyro = vals[7:10]
         self.on_imu(quat, acc, gyro)
-        #print(gyro)
+        print(quat, acc, gyro)
 
         self.gyro_x = gyro[0]
         self.gyro_y = gyro[1]
