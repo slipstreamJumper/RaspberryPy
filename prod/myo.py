@@ -30,9 +30,7 @@ if __name__ == '__main__':
   def set_current_pose(pose):
     global_current_pose = pose
 
-  def normalize_gyro_duty_cycle(x, mi, ma)
-
-
+  def normalize_gyro_duty_cycle(x, mi, ma):
     print("duty: " + str(12.5 - 2.5(x - mi / ma - mi) + 2.5))
     return (12.5 - 2.5(x - mi / ma - mi) + 2.5)
     #x = x + 50
