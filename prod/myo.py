@@ -31,7 +31,7 @@ if __name__ == '__main__':
     global_current_pose = pose
 
   def normalize_gyro_duty_cycle(x, mi, ma):
-    x += 50
+    x += 75
     duty = ((12.5 - 2.5)*(x - mi / ma - mi) + 2.5)
     print("duty: " + str(duty))
     if duty > 100: duty = 100
@@ -41,8 +41,8 @@ if __name__ == '__main__':
 
 
   def move_arm():
-    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z, m.min_z, m.max_z))  # turn towards 90 degree
-    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, m.min_x, m.max_x))  # turn towards 90 degree
+    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z, 0, 100))  # turn towards 90 degree
+    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, 0, 100))  # turn towards 90 degree
     '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree
