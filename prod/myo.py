@@ -31,17 +31,12 @@ if __name__ == '__main__':
     global_current_pose = pose
 
   def normalize_gyro_duty_cycle(x, mi, ma):
-    print("duty: " + str(((12.5 - 2.5)*(x - mi / ma - mi) + 2.5)))
-    return ((12.5 - 2.5)*(x - mi / ma - mi) + 2.5)
-    #x = x + 50
-    #print("duty: " + str((x - 2.5) / (12.5 - 2.5)))
-    #i = (x - 2.5) / (12.5 - 2.5)
-    #if i <= 2.5: i = 5
-    #if i > 100: i = 95
-    #return (i - 2.5) / (12.5 - 2.5)
+    duty = ((12.5 - 2.5)*(x - mi / ma - mi) + 2.5)
+    print("duty: " + str(duty))
+    if duty > 100: duty = 100
+    elif duty < 0: duty = 0
+    return duty
 
-    #(b-a)(x-min(x) / max(x) - min(x))+a
-    #[a, b]
 
 
   def move_arm():
