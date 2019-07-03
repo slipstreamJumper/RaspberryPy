@@ -8,8 +8,8 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.OUT)
 GPIO.setup(11, GPIO.OUT)
-upper = GPIO.PWM(7, 30)
-lower = GPIO.PWM(11, 30)
+upper = GPIO.PWM(7, 100)
+lower = GPIO.PWM(11, 100)
 upper.start(7.5)
 lower.start(7.5)
 
