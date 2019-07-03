@@ -8,7 +8,7 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.OUT)
 GPIO.setup(11, GPIO.OUT)
-upper = GPIO.PWM(7, 100)
+upper = GPIO.PWM(7, 50)
 lower = GPIO.PWM(11, 100)
 upper.start(7.5)
 lower.start(7.5)
@@ -36,8 +36,8 @@ if __name__ == '__main__':
 
 
   def move_arm():
-    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z, -20, 20))  # turn towards 90 degree
-    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, -20, 20))  # turn towards 90 degree
+    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_z, -50, 50))  # turn towards 90 degree
+    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(m.gyro_x, -50, 50))  # turn towards 90 degree
     '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree
@@ -67,6 +67,5 @@ if __name__ == '__main__':
   finally:
     print("max x: " + str(m.max_x) + " min x: " + str(m.min_x))
     print("max y: " + str(m.max_y) + " min y: " + str(m.min_y))
-    print("max z: " + str(m.max_z) + " min z: " + str(m.min_z))
-    m.disconnect()
+    print("max z: " + str(m.max_z) + " min z: " + str(m.min_z))    m.disconnect()
     print()
