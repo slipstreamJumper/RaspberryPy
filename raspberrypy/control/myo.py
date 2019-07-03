@@ -310,7 +310,7 @@ class Myo(object):
         acc = vals[4:7]
         gyro = vals[7:10]
         self.on_imu(quat, acc, gyro)
-        print(quat, acc, gryo)
+        print(quat, acc, gyro)
       elif attr == 0x23:
         typ, val, xdir, _, _ , _ = unpack('6B', pay)
 
