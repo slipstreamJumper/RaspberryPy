@@ -33,7 +33,7 @@ if __name__ == '__main__':
   def normalize_gyro_duty_cycle(x):
     print("duty: " + str((x - 2.5) / (12.5 - 2.5)))
     i = (x - 2.5) / (12.5 - 2.5)
-    if i < 0: i = 5
+    if i <= 2.5: i = 5
     if i > 100: i = 95
     return (i - 2.5) / (12.5 - 2.5)
 
