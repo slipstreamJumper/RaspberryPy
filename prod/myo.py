@@ -30,6 +30,11 @@ if __name__ == '__main__':
   def set_current_pose(pose):
     global_current_pose = pose
 
+  def normalize_gyro_duty_cycle(x):
+    r_val = x + 50
+    if r_val > 100: r_val = 100
+    elif r_val < 0: r_val = 0
+    return r_val
 
   def move_arm():
     upper.ChangeDutyCycle(m.gyro_z)  # turn towards 90 degree
