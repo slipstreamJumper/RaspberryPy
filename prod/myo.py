@@ -34,7 +34,7 @@ if __name__ == '__main__':
     return duty
 
   def update(x):
-    duty = float(x) / 20.0 + 2.5
+    duty = float(x) / 10.0 + 2.5
     return duty
 
   def move_arm():
