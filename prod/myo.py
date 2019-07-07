@@ -33,11 +33,15 @@ if __name__ == '__main__':
     elif duty < 0: duty = 2.5
     return duty
 
-
+  def update(x):
+    duty = float(x) / 20.0 + 2.5
+    return duty
 
   def move_arm():
-    upper.ChangeDutyCycle(normalize_gyro_duty_cycle(0-m.gyro_z, -10, 10))  # turn towards 90 degree
-    lower.ChangeDutyCycle(normalize_gyro_duty_cycle(0-m.gyro_x, -10, 10))  # turn towards 90 degree
+    #upper.ChangeDutyCycle(normalize_gyro_duty_cycle(0-m.gyro_z, -10, 10))  # turn towards 90 degree
+    upper.ChangeDutyCycle(update(0 - m.gyro_z))
+    #lower.ChangeDutyCycle(normalize_gyro_duty_cycle(0-m.gyro_x, -10, 10))  # turn towards 90 degree
+    lower.ChangeDutyCycle(update(0 - m.gyro_x))
     '''
     if pose == "REST":
       upper.ChangeDutyCycle(7.5)  # turn towards 90 degree
